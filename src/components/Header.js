@@ -24,10 +24,12 @@ class Header extends Component {
       <header data-testid="header-component">
         <nav>
           <ul>
-            <li><Link to="/search">Buscar</Link></li>
+            <li><Link to="/search" data-testid="link-to-search">Buscar</Link></li>
             <li><Link to="/album/:id">Album</Link></li>
-            <li><Link to="/favorites">Favoritos</Link></li>
-            <li><Link to="/profile">Perfil</Link></li>
+            <li>
+              <Link to="/favorites" data-testid="link-to-favorites">Favoritos</Link>
+            </li>
+            <li><Link to="/profile" data-testid="link-to-profile">Perfil</Link></li>
             <li><Link to="/profile/edit">Editar Perfil</Link></li>
           </ul>
         </nav>
