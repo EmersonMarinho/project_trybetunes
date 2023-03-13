@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import LoadMessage from '../components/LoadMessage';
 import { createUser } from '../services/userAPI';
 
 class Login extends Component {
@@ -52,7 +53,7 @@ class Login extends Component {
             disabled={ isButtonDisabled || isLoading }
             data-testid="login-submit-button"
           >
-            {isLoading ? 'Carregando...' : 'Entrar'}
+            {isLoading ? <LoadMessage />: 'Entrar'}
           </button>
         </form>
       </div>

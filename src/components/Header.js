@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { getUser } from '../services/userAPI';
+import LoadMessage from './LoadMessage';
 
 class Header extends Component {
   state = {
@@ -33,7 +34,7 @@ class Header extends Component {
             <li><Link to="/profile/edit">Editar Perfil</Link></li>
           </ul>
         </nav>
-        {isLoading ? (<p>Carregando...</p>)
+        {isLoading ? (<LoadMessage />)
           : (<p data-testid="header-user-name">{user.name}</p>)}
       </header>
     );
