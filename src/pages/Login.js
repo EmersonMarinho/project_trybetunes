@@ -18,8 +18,8 @@ class Login extends Component {
   };
 
   handleButtonClick = async (event) => {
-    const { name } = this.state;
     event.preventDefault();
+    const { name } = this.state;
     this.setState({ isLoading: true });
 
     try {
