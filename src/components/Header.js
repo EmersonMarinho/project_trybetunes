@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-closing-tag-location */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { getUser } from '../services/userAPI';
@@ -33,13 +32,7 @@ class Header extends Component {
           </ul>
         </nav>
         {isLoading ? (<p>Carregando...</p>)
-          : (<p data-testid="header-user-name">
-            Ola,
-            {' '}
-            {user.name}
-            !
-          </p>
-          )}
+          : (<p data-testid="header-user-name">{user.name}</p>)}
       </header>
     );
   }
