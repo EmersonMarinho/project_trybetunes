@@ -6,4 +6,6 @@ class App extends React.Component {
   }
 }
 
+// Olá
+
 export default App;
