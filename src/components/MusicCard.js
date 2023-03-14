@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { addSong, removeSong } from '../services/favoriteSongsAPI';
+import LoadMessage from './LoadMessage';
 
 class MusicCard extends Component {
   state = {
@@ -37,7 +38,7 @@ class MusicCard extends Component {
           onChange={ this.handleCheckboxChange }
           checked={ isFavorite }
         />
-        {checkboxLoading && <span>Carregando...</span>}
+        {checkboxLoading && <span><LoadMessage /></span>}
         <audio controls data-testid="audio-component">
           <source src={ music.previewUrl } type="audio/mp3" />
           <track kind="captions" srcLang="en" label="English captions" />
