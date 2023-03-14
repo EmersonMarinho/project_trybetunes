@@ -53,7 +53,7 @@ class Login extends Component {
             disabled={ isButtonDisabled || isLoading }
             data-testid="login-submit-button"
           >
-            {isLoading ? <LoadMessage />: 'Entrar'}
+            {isLoading ? <LoadMessage /> : 'Entrar'}
           </button>
         </form>
       </div>
