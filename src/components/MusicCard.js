@@ -7,8 +7,8 @@ class MusicCard extends Component {
     checkboxLoading: false,
   };
 
-  handleCheckboxClick = async ({ target }) => {
-    const { music } = this.props;
+  handleCheckboxChange = async ({ target }) => {
+    const { music, onUpdateFavoriteSongs } = this.props;
     const isChecked = target.checked;
 
     this.setState({ checkboxLoading: true });
@@ -19,12 +19,14 @@ class MusicCard extends Component {
       await removeSong(music);
     }
 
+    await onUpdateFavoriteSongs();
     this.setState({ checkboxLoading: false });
   };
 
   render() {
-    const { music } = this.props;
+    const { music, favoriteSongs } = this.props;
     const { checkboxLoading } = this.state;
+    const isFavorite = favoriteSongs.some((song) => song.trackId === music.trackId);
 
     return (
       <div>
@@ -32,7 +34,8 @@ class MusicCard extends Component {
         <input
           type="checkbox"
           data-testid={ `checkbox-music-${music.trackId}` }
-          onClick={ this.handleCheckboxClick }
+          onChange={ this.handleCheckboxChange }
+          checked={ isFavorite }
         />
         {checkboxLoading && <span>Carregando...</span>}
         <audio controls data-testid="audio-component">
@@ -45,7 +48,18 @@ class MusicCard extends Component {
 }
 
 MusicCard.propTypes = {
-  music: PropTypes.shape.isRequired,
+  music: PropTypes.shape({
+    trackId: PropTypes.number.isRequired,
+    trackName: PropTypes.string.isRequired,
+    previewUrl: PropTypes.string.isRequired,
+  }).isRequired,
+  favoriteSongs: PropTypes.arrayOf(
+    PropTypes.shape({
+      trackId: PropTypes.number.isRequired,
+      trackName: PropTypes.string.isRequired,
+      previewUrl: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+  onUpdateFavoriteSongs: PropTypes.func.isRequired,
 };
-
 export default MusicCard;
